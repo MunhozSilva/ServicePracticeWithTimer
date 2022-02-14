@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private var timerStarted = false
     private lateinit var serviceIntent: Intent
-    private var time = 0.0
+    private var time = 300.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun resetTimer() {
         stopTimer()
-        time = 0.0
+        time = 300.0
         binding.timerText.text = getTimeStringFromDouble(time)
     }
 
@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
 
     private val updateTime: BroadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent) {
-            time = intent.getDoubleExtra(TimerService.TIME_EXTRA, 0.0)
+            time = intent.getDoubleExtra(TimerService.TIME_EXTRA, 300.0)
             binding.timerText.text = getTimeStringFromDouble(time)
         }
     }
